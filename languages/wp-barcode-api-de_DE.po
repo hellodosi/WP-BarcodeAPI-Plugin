@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: WP Barcode API 1.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/WP-BarcodeAPI-"
 "Plugin\n"
-"POT-Creation-Date: 2026-02-27T22:11:28+00:00\n"
+"POT-Creation-Date: 2026-02-27T22:50:31+00:00\n"
 "PO-Revision-Date: 2026-02-27 21:00+0000\n"
 "Last-Translator: Gemini Code Assist\n"
 "Language-Team: German <de_DE@li.org>\n"
@@ -521,28 +521,32 @@ msgstr "Hinweis: Nicht alle Attribute funktionieren mit jedem Barcode-Typ."
 msgid "You do not have permission to upload files."
 msgstr "Sie haben keine Berechtigung, Dateien hochzuladen."
 
-#: wp-barcode-api.php:412
+#: wp-barcode-api.php:402
+msgid "Error: The content field is required."
+msgstr ""
+
+#: wp-barcode-api.php:417
 msgid "Error retrieving the barcode from the API."
 msgstr "Fehler beim Abrufen des Barcodes von der API."
 
 #. translators: %s: The error message from the upload process.
-#: wp-barcode-api.php:422
+#: wp-barcode-api.php:427
 #, php-format
 msgid "Error saving file: %s"
 msgstr "Fehler beim Speichern der Datei: %s"
 
 #. translators: %s: The content of the barcode.
-#: wp-barcode-api.php:434
+#: wp-barcode-api.php:439
 #, php-format
 msgid "Barcode: %s"
 msgstr "Barcode: %s"
 
 #. translators: %s is a link to view the image.
-#: wp-barcode-api.php:446
+#: wp-barcode-api.php:451
 #, php-format
 msgid "Barcode saved successfully! %s"
 msgstr "Barcode erfolgreich gespeichert! %s"
 
-#: wp-barcode-api.php:447
+#: wp-barcode-api.php:452
 msgid "View image"
 msgstr "Bild ansehen"
