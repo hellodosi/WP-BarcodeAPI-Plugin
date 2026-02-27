@@ -7,7 +7,7 @@
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Dominik Scharrer
- * Author URI:        https://dosimo.de
+ * Author URI:        https://github.com/hellodosi
  * License:           GPL v2 or later
  * Text Domain:       wp-barcode-api
  */
@@ -67,7 +67,7 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 		 * Registriert das Elementor Widget.
 		 */
 		public function register_elementor_widget( $widgets_manager ) {
-			require_once( __DIR__ . '/includes/elementor-widget.php' );
+			require_once( __DIR__ . '/elementor-widget.php' );
 			$widgets_manager->register( new \Elementor_Barcode_Widget() );
 		}
 
@@ -92,17 +92,71 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 		}
 
 		/**
+		 * Gibt eine Liste aller unterstützten Barcode-Typen zurück.
+		 * Quelle: https://barcodeapi.org/types.html
+		 */
+		public static function get_supported_types() {
+			return array(
+				'auto'            => 'Auto Detect',
+				'qrcode'          => 'QR Code',
+				'code128'         => 'Code 128',
+				'code39'          => 'Code 39',
+				'code93'          => 'Code 93',
+				'codabar'         => 'Codabar',
+				'ean13'           => 'EAN-13',
+				'ean8'            => 'EAN-8',
+				'upc'             => 'UPC-A',
+				'upce'            => 'UPC-E',
+				'itf'             => 'ITF (Interleaved 2 of 5)',
+				'itf14'           => 'ITF-14',
+				'msi'             => 'MSI',
+				'msi10'           => 'MSI 10',
+				'msi11'           => 'MSI 11',
+				'msi1010'         => 'MSI 1010',
+				'msi1110'         => 'MSI 1110',
+				'pharmacode'      => 'Pharmacode',
+				'datamatrix'      => 'Data Matrix',
+				'pdf417'          => 'PDF417',
+				'aztec'           => 'Aztec Code',
+				'telepen'         => 'Telepen',
+				'kix'             => 'KIX (Klant index)',
+				'rm4scc'          => 'RM4SCC (Royal Mail)',
+				'onecode'         => 'USPS Intelligent Mail',
+				'gs1-128'         => 'GS1-128',
+				'isbn'            => 'ISBN',
+				'ismn'            => 'ISMN',
+				'issn'            => 'ISSN',
+				'postnet'         => 'Postnet',
+				'planet'          => 'Planet',
+				'channelcode'     => 'Channel Code',
+				'code11'          => 'Code 11',
+				'code2of5'        => 'Code 2 of 5',
+				'coop2of5'        => 'COOP 2 of 5',
+				'matrix2of5'      => 'Matrix 2 of 5',
+				'industrial2of5'  => 'Industrial 2 of 5',
+			);
+		}
+
+		/**
 		 * Generiert die API URL basierend auf Parametern.
 		 */
 		public static function get_api_url( $content, $type = 'auto', $args = array() ) {
 			$base_url = 'https://barcodeapi.org/api';
 			$type     = sanitize_text_field( $type );
-			$content  = urlencode( $content ); // Wichtig für URL-Sicherheit
+			$content  = rawurlencode( $content ); // rawurlencode (%20 statt +) ist sicherer für Pfad-Segmente
 
 			// API Key hinzufügen, falls vorhanden
 			$api_key = get_option( 'wp_barcode_api_key' );
 			if ( ! empty( $api_key ) ) {
 				$args['token'] = $api_key;
+			}
+
+			// Farben bereinigen (Hash entfernen für API)
+			if ( ! empty( $args['fg'] ) ) {
+				$args['fg'] = str_replace( '#', '', $args['fg'] );
+			}
+			if ( ! empty( $args['bg'] ) ) {
+				$args['bg'] = str_replace( '#', '', $args['bg'] );
 			}
 
 			// Query Parameter bauen
@@ -128,6 +182,8 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 				'text_size'   => '',
 				'text_margin' => '',
 				'rotation'    => '',
+				'fg'          => '',
+				'bg'          => '',
 			), $atts, 'barcode' );
 
 			$args = array(
@@ -137,6 +193,8 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 				'textsize'   => $atts['text_size'],
 				'textmargin' => $atts['text_margin'],
 				'rotation'   => $atts['rotation'],
+				'fg'         => $atts['fg'],
+				'bg'         => $atts['bg'],
 			);
 
 			$image_url = self::get_api_url( $atts['content'], $atts['type'], $args );
@@ -153,6 +211,18 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 			if ( isset( $_POST['generate_static_barcode'] ) && check_admin_referer( 'wp_barcode_generate_static' ) ) {
 				$message = $this->handle_static_generation();
 			}
+			
+			// Server-seitigen Status abrufen
+			$api_key = get_option( 'wp_barcode_api_key' );
+			$server_url = 'https://barcodeapi.org/limiter/';
+			if ( ! empty( $api_key ) ) {
+				$server_url = add_query_arg( 'token', $api_key, $server_url );
+			}
+			$server_data = null;
+			$response = wp_remote_get( $server_url );
+			if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
+				$server_data = json_decode( wp_remote_retrieve_body( $response ), true );
+			}
 
 			?>
 			<div class="wrap">
@@ -164,9 +234,60 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 
 				<div style="background: #fff; padding: 20px; border: 1px solid #ccd0d4; margin-bottom: 20px; box-shadow: 0 1px 1px rgba(0,0,0,.04);">
 					<h2>API Nutzung & Rate Limits</h2>
-					<p>Dieses Plugin nutzt die API von <a href="https://barcodeapi.org" target="_blank">barcodeapi.org</a>. Die Generierung erfolgt standardmäßig client-seitig (im Browser des Besuchers), um Ihren Server zu entlasten.</p>
-					<p><strong>Wichtiger Hinweis:</strong> Bitte beachten Sie die Rate Limits der API (z.B. für kostenlose Nutzung). Sollten Sie viele Aufrufe erwarten, empfehlen wir den Kauf eines API Keys.</p>
-					<p><a href="https://barcodeapi.org/#pricing" target="_blank" class="button button-primary">API Key kaufen</a></p>
+					<p>Die API limitiert Anfragen basierend auf der IP-Adresse. Da dieses Plugin sowohl client-seitige (Browser) als auch server-seitige (WordPress) Anfragen nutzt, werden hier beide Limits getrennt angezeigt.</p>
+					
+					<div style="display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap;">
+						<!-- Server Side -->
+						<div style="flex: 1; min-width: 250px; padding: 15px; background: #f0f0f1; border: 1px solid #c3c4c7;">
+							<h3 style="margin-top: 0;">Server-seitig (WordPress)</h3>
+							<p class="description">Genutzt für: Statische Generierung, Caching.</p>
+							<?php if ( $server_data ) : ?>
+								<ul style="margin-bottom: 0;">
+									<li><strong>IP:</strong> <?php echo esc_html( $server_data['caller'] ); ?></li>
+									<li><strong>Verbraucht:</strong> <?php echo esc_html( $server_data['tokenSpend'] ); ?> / <?php echo esc_html( $server_data['tokenLimit'] ); ?></li>
+									<li><strong>Status:</strong> <?php echo $server_data['enforce'] ? '<span style="color:#d63638">Gesperrt</span>' : '<span style="color:#00a32a">Aktiv</span>'; ?></li>
+								</ul>
+							<?php else : ?>
+								<p>Status konnte nicht abgerufen werden.</p>
+							<?php endif; ?>
+						</div>
+
+						<!-- Client Side -->
+						<div style="flex: 1; min-width: 250px; padding: 15px; background: #f0f0f1; border: 1px solid #c3c4c7;">
+							<h3 style="margin-top: 0;">Client-seitig (Ihr Browser)</h3>
+							<p class="description">Genutzt für: Shortcodes, Elementor Widget.</p>
+							<div id="bc-client-status">Lade Daten...</div>
+						</div>
+					</div>
+
+					<p style="margin-top: 15px;">
+						<a href="https://barcodeapi.org/session.html" target="_blank" class="button button-secondary">Details auf barcodeapi.org ansehen</a>
+						<a href="https://barcodeapi.org/#pricing" target="_blank" class="button button-primary">API Key kaufen</a>
+					</p>
+
+					<script>
+					(function() {
+						var apiKey = '<?php echo esc_js( $api_key ); ?>';
+						var url = 'https://barcodeapi.org/limiter/';
+						if ( apiKey ) {
+							url += '?token=' + encodeURIComponent(apiKey);
+						}
+
+						fetch(url)
+							.then(function(response) { return response.json(); })
+							.then(function(data) {
+								var html = '<ul style="margin-bottom: 0;">';
+								html += '<li><strong>IP:</strong> ' + (data.caller || 'Unbekannt') + '</li>';
+								html += '<li><strong>Verbraucht:</strong> ' + (data.tokenSpend || 0) + ' / ' + (data.tokenLimit || 0) + '</li>';
+								html += '<li><strong>Status:</strong> ' + (data.enforce ? '<span style="color:#d63638">Gesperrt</span>' : '<span style="color:#00a32a">Aktiv</span>') + '</li>';
+								html += '</ul>';
+								document.getElementById('bc-client-status').innerHTML = html;
+							})
+							.catch(function(err) {
+								document.getElementById('bc-client-status').innerText = 'Fehler: ' + err.message;
+							});
+					})();
+					</script>
 				</div>
 
 				<form method="post" action="options.php">
@@ -202,12 +323,9 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 							<th>Typ</th>
 							<td>
 								<select name="bc_type">
-									<option value="auto">Auto</option>
-									<option value="qrcode">QR Code</option>
-									<option value="ean13">EAN-13</option>
-									<option value="code128">Code 128</option>
-									<option value="code39">Code 39</option>
-									<option value="upc">UPC</option>
+									<?php foreach ( self::get_supported_types() as $value => $label ) : ?>
+										<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
+									<?php endforeach; ?>
 								</select>
 							</td>
 						</tr>
@@ -216,6 +334,13 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 							<td>
 								<label>Breite: <input type="number" name="bc_width" placeholder="z.B. 200" class="small-text"></label>
 								<label>Höhe: <input type="number" name="bc_height" placeholder="z.B. 80" class="small-text"></label>
+							</td>
+						</tr>
+						<tr>
+							<th>Farben (Hex)</th>
+							<td>
+								<label>Vordergrund: <input type="text" name="bc_fg" placeholder="000000" class="small-text"></label>
+								<label>Hintergrund: <input type="text" name="bc_bg" placeholder="ffffff" class="small-text"></label>
 							</td>
 						</tr>
 					</table>
@@ -229,7 +354,7 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 				<h2>Shortcode Anleitung</h2>
 				<p>Verwenden Sie den Shortcode an beliebiger Stelle:</p>
 				<code>[barcode content="IhrText" type="qrcode" width="150"]</code>
-				<p>Verfügbare Attribute: <code>content</code>, <code>type</code> (auto, qrcode, ean13, etc.), <code>width</code>, <code>height</code>, <code>show_text</code> (true/false).</p>
+				<p>Verfügbare Attribute: <code>content</code>, <code>type</code>, <code>width</code>, <code>height</code>, <code>fg</code> (Farbe), <code>bg</code> (Hintergrund), <code>show_text</code>.</p>
 			</div>
 			<?php
 		}
@@ -246,10 +371,14 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 			$type    = sanitize_text_field( $_POST['bc_type'] );
 			$width   = sanitize_text_field( $_POST['bc_width'] );
 			$height  = sanitize_text_field( $_POST['bc_height'] );
+			$fg      = sanitize_text_field( $_POST['bc_fg'] );
+			$bg      = sanitize_text_field( $_POST['bc_bg'] );
 
 			$args = array(
 				'width'  => $width,
 				'height' => $height,
+				'fg'     => $fg,
+				'bg'     => $bg,
 			);
 
 			$url = self::get_api_url( $content, $type, $args );

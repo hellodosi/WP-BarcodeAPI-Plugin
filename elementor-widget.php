@@ -45,24 +45,15 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+		$options = class_exists( 'WP_Barcode_API' ) ? WP_Barcode_API::get_supported_types() : [ 'auto' => 'Auto' ];
+
 		$this->add_control(
 			'barcode_type',
 			[
 				'label' => esc_html__( 'Barcode Typ', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'auto',
-				'options' => [
-					'auto' => 'Auto Detect',
-					'qrcode' => 'QR Code',
-					'ean13' => 'EAN-13',
-					'ean8' => 'EAN-8',
-					'code128' => 'Code 128',
-					'code39' => 'Code 39',
-					'upc' => 'UPC',
-					'itf' => 'ITF',
-					'msi' => 'MSI',
-					'pharmacode' => 'Pharmacode',
-				],
+				'options' => $options,
 			]
 		);
 
@@ -126,6 +117,24 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'barcode_fg',
+			[
+				'label' => esc_html__( 'Vordergrundfarbe', 'wp-barcode-api' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#000000',
+			]
+		);
+
+		$this->add_control(
+			'barcode_bg',
+			[
+				'label' => esc_html__( 'Hintergrundfarbe', 'wp-barcode-api' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#ffffff',
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -143,6 +152,8 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 				'height'   => $settings['barcode_height'],
 				'text'     => $settings['show_text'],
 				'rotation' => $settings['rotation'],
+				'fg'       => $settings['barcode_fg'],
+				'bg'       => $settings['barcode_bg'],
 			];
 
 			$url = WP_Barcode_API::get_api_url( $settings['barcode_content'], $settings['barcode_type'], $args );
