@@ -2,65 +2,72 @@
 Tags: barcode, qrcode, ean, elementor, api, generator
 Requires at least: 6.0
 Tested up to: 6.4
-Stable tag: 1.0.0
+Stable tag: 1.0.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Ein leistungsstarkes Plugin zur Generierung von Barcodes und QR-Codes über Shortcodes oder Elementor unter Verwendung der BarcodeAPI.org Schnittstelle.
+A powerful plugin for generating barcodes and QR codes via shortcodes or Elementor using the BarcodeAPI.org interface.
 
 == Description ==
 
-WP Barcode API ermöglicht die einfache Einbindung von Barcodes in Ihre WordPress-Website. Das Plugin nutzt die API von [barcodeapi.org](https://barcodeapi.org), um eine Vielzahl von Barcode-Formaten dynamisch zu generieren.
+WP Barcode API allows for easy integration of barcodes into your WordPress website. The plugin uses the API from [barcodeapi.org](https://barcodeapi.org) to dynamically generate a variety of barcode formats.
 
-Die Generierung erfolgt standardmäßig client-seitig (via URL), was Ihren Server entlastet. Für statische Anwendungsfälle bietet das Plugin zudem einen Generator im Backend, der Barcodes als Bilddatei direkt in Ihre Mediathek speichert.
+By default, generation is done client-side (via URL), which reduces the load on your server. For static use cases, the plugin also offers a backend generator that saves barcodes as image files directly to your media library.
 
-**Hauptfunktionen:**
+**Key Features:**
 
-*   **Shortcode Support:** Fügen Sie Barcodes einfach mit `[barcode]` in Beiträge oder Seiten ein.
-*   **Elementor Widget:** Ein natives Widget für Elementor mit Styling-Optionen (Breite, Höhe, Rotation) und Unterstützung für dynamische Tags (z.B. Post-ID oder Custom Fields als Barcode-Inhalt).
-*   **Statische Generierung:** Erstellen Sie Barcodes manuell im Admin-Bereich und speichern Sie diese dauerhaft in der WordPress Mediathek.
-*   **API Key Support:** Hinterlegen Sie optional einen API Key, um höhere Rate-Limits zu nutzen.
-*   **Unterstützte Formate:** QR Code, EAN-13, EAN-8, Code 128, Code 39, UPC, ITF, MSI, Pharmacode.
+*   **Shortcode Support:** Easily insert barcodes into posts or pages with `[barcode]`.
+*   **Elementor Widget:** A native widget for Elementor with styling options (width, height, rotation) and support for dynamic tags (e.g., using Post ID or Custom Fields as barcode content).
+*   **Static Generation:** Manually create barcodes in the admin area and save them permanently to the WordPress Media Library.
+*   **API Key Support:** Optionally provide an API key to benefit from higher rate limits.
+*   **Supported Formats:** QR Code, EAN-13, EAN-8, Code 128, Code 39, UPC, ITF, MSI, Pharmacode, and many more.
 
 == Installation ==
 
-1. Laden Sie den Ordner `wp-barcode-api` in das Verzeichnis `/wp-content/plugins/` hoch.
-2. Aktivieren Sie das Plugin über das Menü 'Plugins' in WordPress.
-3. (Optional) Gehen Sie zu *Einstellungen > Barcode API* und hinterlegen Sie Ihren API Key, falls vorhanden.
+1. Upload the `wp-barcode-api` folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. (Optional) Go to *Settings > Barcode API* and enter your API key if you have one.
 
 == Frequently Asked Questions ==
 
-= Benötige ich einen API Key? =
+= Do I need an API Key? =
 
-Für geringes Aufkommen ist die API von barcodeapi.org oft kostenlos nutzbar (beachten Sie die aktuellen Rate Limits auf deren Website). Für professionellen Einsatz oder hohen Traffic empfehlen wir den Kauf eines Keys.
+For low traffic, the barcodeapi.org API is often free to use (please check their website for current rate limits). For professional use or high traffic, we recommend purchasing a key.
 
-= Welche Daten werden übertragen? =
+= What data is transmitted? =
 
-Das Plugin generiert Bild-URLs, die auf `barcodeapi.org` zeigen. Die IP-Adresse des Besuchers und der Inhalt des Barcodes werden an die API übermittelt, um das Bild zu generieren.
+The plugin generates image URLs that point to `barcodeapi.org`. The visitor's IP address and the barcode content are transmitted to the API to generate the image.
 
-= Wie nutze ich den Shortcode? =
+= How do I use the shortcode? =
 
-Verwenden Sie den Shortcode wie folgt:
+Use the shortcode as follows:
 `[barcode content="123456" type="ean13" width="200" height="100" show_text="true"]`
 
-Verfügbare Parameter:
-*   `content`: Der Inhalt des Barcodes (Text oder URL).
-*   `type`: Der Typ (z.B. `qrcode`, `ean13`, `code128`, `auto`).
-*   `width`: Breite in Pixeln.
-*   `height`: Höhe in Pixeln.
-*   `show_text`: `true` oder `false` (zeigt den Text unter dem Barcode an).
-*   `rotation`: `N` (Normal), `R` (Rechts), `L` (Links), `I` (Invertiert).
-
-== Screenshots ==
-
-1. Die Einstellungsseite mit dem Generator für statische Barcodes.
-2. Das Elementor Widget in Aktion.
+Available parameters:
+*   `content`: The content of the barcode (text or URL).
+*   `type`: The type (e.g., `qrcode`, `ean13`, `code128`, `auto`).
+*   `width`: Width in pixels.
+*   `height`: Height in pixels.
+*   `show_text`: `true` or `false` (shows the text below the barcode).
+*   `rotation`: `N` (Normal), `R` (Right), `L` (Left), `I` (Inverted).
 
 == Changelog ==
 
+= 1.0.4 =
+* Enhancement: Full internationalization (i18n) of the plugin. All strings are now translatable.
+
+= 1.0.3 =
+* Enhancement: Improved admin area code quality by externalizing CSS and JavaScript.
+
+= 1.0.2 =
+* Fix: Adjusted update checker for public repository.
+
+= 1.0.1 =
+* Fix: Corrected release workflow for GitHub Actions.
+
 = 1.0.0 =
-*   Initialer Release.
-*   Hinzugefügt: Shortcode `[barcode]`.
-*   Hinzugefügt: Elementor Widget.
-*   Hinzugefügt: Admin-Seite mit API Key Einstellung und Generator.
+*   Initial release.
+*   Added: Shortcode `[barcode]`.
+*   Added: Elementor Widget.
+*   Added: Admin page with API Key setting and generator.

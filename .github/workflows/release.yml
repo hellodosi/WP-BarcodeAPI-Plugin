@@ -1,4 +1,4 @@
-name: Release Plugin
+name: Release
 
 on:
   workflow_dispatch:
@@ -35,6 +35,25 @@ jobs:
         run: |
           echo "Tag ${{ env.VERSION }} existiert bereits. Der Release-Prozess wird übersprungen."
           exit 0
+
+      - name: Commit readme.txt update
+        if: steps.check_tag.outputs.exists == 'false'
+        run: |
+          # 1. "Stable tag" in readme.txt aktualisieren
+          sed -i "s/^Stable tag: .*/Stable tag: ${{ env.VERSION }}/" readme.txt
+
+          # 2. Platzhalter für den neuen Changelog-Eintrag hinzufügen
+          sed -i "/^== Changelog ==/a \\\n= ${{ env.VERSION }} =\n* Siehe die vollständigen Release-Notes auf GitHub.\n" readme.txt
+
+          # 3. Änderungen committen, damit der Tag auf den neuesten Stand verweist
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add readme.txt
+          # Nur committen, wenn es Änderungen gibt
+          if ! git diff --staged --quiet; then
+            git commit -m "Docs: Update readme.txt for version ${{ env.VERSION }}"
+            git push
+          fi
 
       - name: Prepare Release Package
         if: steps.check_tag.outputs.exists == 'false'

@@ -27,7 +27,7 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'content_section',
 			[
-				'label' => esc_html__( 'Inhalt', 'wp-barcode-api' ),
+				'label' => esc_html__( 'Content', 'wp-barcode-api' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -35,13 +35,13 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'barcode_content',
 			[
-				'label' => esc_html__( 'Barcode Inhalt', 'wp-barcode-api' ),
+				'label' => esc_html__( 'Barcode Content', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'default' => '12345678',
 				'dynamic' => [
 					'active' => true,
 				],
-				'placeholder' => esc_html__( 'Text oder URL eingeben', 'wp-barcode-api' ),
+				'placeholder' => esc_html__( 'Enter text or URL', 'wp-barcode-api' ),
 			]
 		);
 
@@ -50,7 +50,7 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'barcode_type',
 			[
-				'label' => esc_html__( 'Barcode Typ', 'wp-barcode-api' ),
+				'label' => esc_html__( 'Barcode Type', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'auto',
 				'options' => $options,
@@ -60,19 +60,19 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'align',
 			[
-				'label' => esc_html__( 'Ausrichtung', 'wp-barcode-api' ),
+				'label' => esc_html__( 'Alignment', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Links', 'wp-barcode-api' ),
+						'title' => esc_html__( 'Left', 'wp-barcode-api' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Zentriert', 'wp-barcode-api' ),
+						'title' => esc_html__( 'Center', 'wp-barcode-api' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Rechts', 'wp-barcode-api' ),
+						'title' => esc_html__( 'Right', 'wp-barcode-api' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -88,7 +88,7 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'api_settings_section',
 			[
-				'label' => esc_html__( 'API Einstellungen', 'wp-barcode-api' ),
+				'label' => esc_html__( 'API Settings', 'wp-barcode-api' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -97,7 +97,10 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 			'style_limitations_notice',
 			[
 				'type' => \Elementor\Controls_Manager::RAW_HTML,
-				'raw' => '<div style="font-size: 11px; line-height: 1.4; color: #777; margin-bottom: 15px;"><i>Hinweis: Manche Einstellungen (z.B. Farben, Größe, Text) werden nicht von allen Barcode-Typen unterstützt.</i></div>',
+				'raw' => sprintf(
+					'<div style="font-size: 11px; line-height: 1.4; color: #777; margin-bottom: 15px;"><i>%s</i></div>',
+					esc_html__( 'Note: Some settings (e.g., colors, size, text) are not supported by all barcode types.', 'wp-barcode-api' )
+				),
 				'content_classes' => 'elementor-descriptor',
 			]
 		);
@@ -105,7 +108,7 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'barcode_width',
 			[
-				'label' => esc_html__( 'API Breite (px)', 'wp-barcode-api' ),
+				'label' => esc_html__( 'API Width (px)', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::NUMBER,
 				'min' => 0,
 				'max' => 1000,
@@ -116,7 +119,7 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'barcode_height',
 			[
-				'label' => esc_html__( 'API Höhe (px)', 'wp-barcode-api' ),
+				'label' => esc_html__( 'API Height (px)', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::NUMBER,
 				'min' => 0,
 				'max' => 1000,
@@ -127,10 +130,10 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'show_text',
 			[
-				'label' => esc_html__( 'Text anzeigen', 'wp-barcode-api' ),
+				'label' => esc_html__( 'Show Text', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => 'Ja',
-				'label_off' => 'Nein',
+				'label_on' => esc_html__( 'Yes', 'wp-barcode-api' ),
+				'label_off' => esc_html__( 'No', 'wp-barcode-api' ),
 				'return_value' => 'true',
 				'default' => '',
 			]
@@ -143,10 +146,10 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'N',
 				'options' => [
-					'N' => 'Normal',
-					'R' => '90° Rechts',
-					'L' => '90° Links',
-					'I' => '180° Invertiert',
+					'N' => esc_html__( 'Normal', 'wp-barcode-api' ),
+					'R' => esc_html__( '90° Right', 'wp-barcode-api' ),
+					'L' => esc_html__( '90° Left', 'wp-barcode-api' ),
+					'I' => esc_html__( '180° Inverted', 'wp-barcode-api' ),
 				],
 			]
 		);
@@ -154,7 +157,7 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'barcode_fg',
 			[
-				'label' => esc_html__( 'Vordergrundfarbe', 'wp-barcode-api' ),
+				'label' => esc_html__( 'Foreground Color', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '#000000',
 			]
@@ -163,7 +166,7 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'barcode_bg',
 			[
-				'label' => esc_html__( 'Hintergrundfarbe', 'wp-barcode-api' ),
+				'label' => esc_html__( 'Background Color', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '#ffffff',
 			]
@@ -175,7 +178,7 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_style_image',
 			[
-				'label' => esc_html__( 'Bild', 'wp-barcode-api' ),
+				'label' => esc_html__( 'Image', 'wp-barcode-api' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -183,7 +186,7 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'width',
 			[
-				'label' => esc_html__( 'Breite', 'wp-barcode-api' ),
+				'label' => esc_html__( 'Width', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'default' => [
 					'unit' => '%',
@@ -218,7 +221,7 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'max_width',
 			[
-				'label' => esc_html__( 'Max. Breite', 'wp-barcode-api' ),
+				'label' => esc_html__( 'Max Width', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'default' => [
 					'unit' => '%',
@@ -253,7 +256,7 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'opacity',
 			[
-				'label' => esc_html__( 'Deckkraft', 'wp-barcode-api' ),
+				'label' => esc_html__( 'Opacity', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -279,7 +282,7 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'image_border_radius',
 			[
-				'label' => esc_html__( 'Eckenradius', 'wp-barcode-api' ),
+				'label' => esc_html__( 'Border Radius', 'wp-barcode-api' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -317,9 +320,9 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 				'bg'       => $settings['barcode_bg'],
 			];
 
-			$url = WP_Barcode_API::get_api_url( $settings['barcode_content'], $settings['barcode_type'], $args );
+			$url = WP_Barcode_API::get_api_url( $settings['barcode_content'], $settings['barcode_type'], $args, false ); // false = Key nicht für Client-Anfragen nutzen
 
-			echo sprintf( '<img src="%s" alt="Barcode">', esc_url( $url ) );
+			echo sprintf( '<img src="%s" alt="%s">', esc_url( $url ), esc_attr__( 'Barcode', 'wp-barcode-api' ) );
 		}
 	}
 }

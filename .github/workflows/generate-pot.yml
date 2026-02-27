@@ -1,0 +1,39 @@
+name: Generate POT File
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.php'
+      - 'admin/**.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-pot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate POT file
+        run: |
+          curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+          chmod +x wp-cli.phar
+          sudo mv wp-cli.phar /usr/local/bin/wp
+          wp i18n make-pot . languages/wp-barcode-api.pot --domain=wp-barcode-api --exclude="vendor,plugin-update-checker,.github,.vscode,node_modules"
+
+      - name: Commit and push POT file
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          if ! git diff --quiet languages/wp-barcode-api.pot; then
+            git add languages/wp-barcode-api.pot
+            git commit -m "i18n: Update POT file"
+            git push
+          else
+            echo "No changes to POT file."
+          fi

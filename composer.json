@@ -1,0 +1,16 @@
+{
+    "name": "hellodosi/wp-barcode-api-plugin",
+    "description": "A WordPress plugin to generate barcodes using shortcodes or Elementor via the BarcodeAPI.org interface.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Dominik Scharrer",
+            "homepage": "https://github.com/hellodosi"
+        }
+    ],
+    "require-dev": {
+        "php-stubs/wordpress-stubs": "^6.4",
+        "arifpavel/elementor-stubs": "^3.1"
+    }
+}

@@ -1,65 +1,65 @@
 # WP Barcode API
 
-Ein leistungsstarkes WordPress-Plugin zur Generierung von Barcodes und QR-Codes über Shortcodes oder Elementor unter Verwendung der [BarcodeAPI.org](https://barcodeapi.org) Schnittstelle.
+A powerful WordPress plugin for generating barcodes and QR codes via shortcodes or Elementor using the BarcodeAPI.org interface.
 
-## Funktionen
+## Features
 
-*   **Shortcode Support:** Einfaches Einfügen von Barcodes in Beiträge oder Seiten mit `[barcode]`.
-*   **Elementor Widget:** Natives Widget mit umfangreichen Styling-Optionen und Unterstützung für dynamische Tags.
-*   **Statische Generierung:** Erstellen Sie Barcodes manuell im Admin-Bereich und speichern Sie diese dauerhaft in der WordPress Mediathek.
-*   **API Key Support:** Hinterlegen Sie optional einen API Key, um höhere Rate-Limits zu nutzen.
-*   **Client-Side Rendering:** Standardmäßig werden Barcodes direkt im Browser des Besuchers generiert, um Ihren Server zu entlasten.
-*   **Status-Check:** Überprüfen Sie Ihre API-Limits (Server & Client) direkt im Backend.
+*   **Shortcode Support:** Easily insert barcodes into posts or pages with `[barcode]`.
+*   **Elementor Widget:** Native widget with extensive styling options and support for dynamic tags.
+*   **Static Generation:** Manually create barcodes in the admin area and save them permanently to the WordPress Media Library.
+*   **API Key Support:** Optionally provide an API key to benefit from higher rate limits.
+*   **Client-Side Rendering:** By default, barcodes are generated directly in the visitor's browser to reduce server load.
+*   **Status Check:** Check your API limits (server & client) directly in the backend.
 
-## Unterstützte Formate
+## Supported Formats
 
-Das Plugin unterstützt alle gängigen Formate der API, darunter:
+The plugin supports all common formats of the API, including:
 *   QR Code
 *   EAN-13, EAN-8
 *   Code 128, Code 39, Code 93
 *   UPC-A, UPC-E
 *   ITF, MSI, Pharmacode
 *   Data Matrix, PDF417, Aztec
-*   und viele mehr.
+*   and many more.
 
 ## Installation
 
-1.  Laden Sie das Plugin-Verzeichnis in den Ordner `/wp-content/plugins/` hoch oder installieren Sie das ZIP-Archiv über das WordPress-Backend.
-2.  Aktivieren Sie das Plugin über das Menü 'Plugins' in WordPress.
-3.  (Optional) Gehen Sie zu *Einstellungen > Barcode API* und hinterlegen Sie Ihren API Key.
+1.  Upload the plugin directory to the `/wp-content/plugins/` folder or install the ZIP archive via the WordPress backend.
+2.  Activate the plugin through the 'Plugins' menu in WordPress.
+3.  (Optional) Go to *Settings > Barcode API* and enter your API key.
 
-## Nutzung
+## Usage
 
 ### Shortcode
 
-Verwenden Sie den Shortcode an beliebiger Stelle in Ihren Inhalten:
+Use the shortcode anywhere in your content:
 
 ```shortcode
 [barcode content="123456" type="ean13" width="200" height="100" show_text="true"]
 ```
 
 **Attribute:**
-*   `content`: Der Inhalt (Text oder URL).
-*   `type`: Der Barcode-Typ (z.B. `qrcode`, `ean13`, `auto`).
-*   `width`, `height`: Dimensionen in Pixeln.
-*   `fg`, `bg`: Vorder- und Hintergrundfarbe (Hex, z.B. `ff0000`).
-*   `show_text`: `true` oder `false`.
+*   `content`: The Content (Text or URL).
+*   `type`: The Barcode-Type (e.g. `qrcode`, `ean13`, `auto`).
+*   `width`, `height`: Dimensions in pixels.
+*   `fg`, `bg`: Foreground- and HBackgroundcolor (Hex, z.B. `ff0000`).
+*   `show_text`: `true` or `false`.
 
 ### Elementor
 
-Suchen Sie im Elementor-Editor nach dem Widget **Barcode API**.
-*   **Inhalt:** Wählen Sie den Typ und geben Sie den Inhalt ein (unterstützt dynamische Tags).
-*   **API Einstellungen:** Konfigurieren Sie API-spezifische Parameter wie Farben und Rotation.
-*   **Stil:** Nutzen Sie die Standard-Bild-Optionen von Elementor für Rahmen, Schatten, Größe und Ausrichtung.
+Search for the widget in the Elementor editor. **Barcode API**.
+*   **Content:** Select the type and enter the content (supports dynamic tags).
+*   **API Settings:** Configure API-specific parameters such as colors and rotation.
+*   **Style:** Use Elementor's standard image options for borders, shadows, size, and alignment.
 
-### Statischer Generator
+### Static generator
 
-Unter *Einstellungen > Barcode API* finden Sie einen Generator, mit dem Sie Barcodes einmalig erstellen und als Bilddatei in Ihre Mediathek importieren können. Dies ist ideal für statische Inhalte, die nicht bei jedem Seitenaufruf neu generiert werden müssen.
+Under *Settings > Barcode API*, you will find a generator that allows you to create barcodes once and import them into your media library as image files. This is ideal for static content that does not need to be regenerated every time the page is viewed.
 
 ## API Limits
 
-Das Plugin nutzt die API von barcodeapi.org. Bitte beachten Sie die Rate Limits der API. Im Admin-Bereich des Plugins können Sie Ihren aktuellen Verbrauchsstatus (sowohl für den Server als auch für Ihren Client) einsehen.
+The plugin uses the API from barcodeapi.org. Please note the API's rate limits. You can view your current usage status (both for the server and for your client) in the plugin's admin area.
 
-## Lizenz
+## License
 
 GPL v2 or later
