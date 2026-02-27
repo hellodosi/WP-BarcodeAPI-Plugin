@@ -1,0 +1,57 @@
+name: Release Plugin
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get Version from File
+        id: get_version
+        run: |
+          # Liest die Version aus der vcards.php (sucht nach "Version: x.x")
+          VERSION=$(grep -i "Version:" vcards.php | awk -F': ' '{print $2}' | tr -d '[:space:]')
+          echo "Gefundene Version: $VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Check if Tag exists
+        id: check_tag
+        run: |
+          if git ls-remote --exit-code --tags origin "refs/tags/${{ env.VERSION }}" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Stop if Tag exists
+        if: steps.check_tag.outputs.exists == 'true'
+        run: |
+          echo "Tag ${{ env.VERSION }} existiert bereits. Es wird nichts unternommen."
+          exit 1
+
+      - name: Prepare Release Package
+        if: steps.check_tag.outputs.exists == 'false'
+        run: |
+          # Erstelle temporären Ordner für die korrekte Struktur (vcards/...)
+          mkdir build
+          mkdir build/vcards
+          
+          # Kopiere alle Dateien außer git/github/build Stuff in den Unterordner
+          rsync -av --progress . build/vcards --exclude .git --exclude .github --exclude .vscode --exclude .gitignore --exclude build --exclude /vendor --exclude 'plugin-update-checker/examples' --exclude 'plugin-update-checker/README.md' --exclude 'plugin-update-checker/composer.json'
+          
+          # Wechsel in build Ordner und zippe den vcards Ordner
+          cd build
+          zip -r ../vcards.zip vcards
+
+      - name: Create Release
+        if: steps.check_tag.outputs.exists == 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create ${{ env.VERSION }} vcards.zip --title "Version ${{ env.VERSION }}" --generate-notes
