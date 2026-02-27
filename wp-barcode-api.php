@@ -235,14 +235,19 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 
 			$image_url = self::get_api_url( $atts['content'], $atts['type'], $args, false ); // false = Do not use key for client-side requests
 
-			return sprintf( '<img src="%s" alt="%s" class="wp-barcode-api-img" />', esc_url( $image_url ), sprintf( esc_attr__( 'Barcode for %s', 'wp-barcode-api' ), $atts['content'] ) );
+			return sprintf(
+				'<img src="%s" alt="%s" class="wp-barcode-api-img" />',
+				esc_url( $image_url ),
+				/* translators: %s: The content of the barcode. */
+				sprintf( esc_attr__( 'Barcode for %s', 'wp-barcode-api' ), $atts['content'] )
+			);
 		}
 
 		/**
 		 * Renders the admin page.
 		 */
 		public function render_admin_page() {
-			// Statischen Barcode speichern Logik
+			// Handle static barcode generation logic.
 			$message = '';
 			if ( isset( $_POST['generate_static_barcode'] ) && check_admin_referer( 'wp_barcode_generate_static' ) ) {
 				$message = $this->handle_static_generation();
@@ -412,7 +417,11 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 			$upload     = wp_upload_bits( $filename, null, $image_data );
 
 			if ( ! empty( $upload['error'] ) ) {
-				return sprintf( __( 'Error saving file: %s', 'wp-barcode-api' ), $upload['error'] );
+				return sprintf(
+					/* translators: %s: The error message from the upload process. */
+					__( 'Error saving file: %s', 'wp-barcode-api' ),
+					$upload['error']
+				);
 			}
 
 			// In Mediathek einfügen
@@ -421,6 +430,7 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 			
 			$attachment = array(
 				'post_mime_type' => $file_type['type'],
+				/* translators: %s: The content of the barcode. */
 				'post_title'     => sprintf( __( 'Barcode: %s', 'wp-barcode-api' ), $content ),
 				'post_content'   => '',
 				'post_status'    => 'inherit'

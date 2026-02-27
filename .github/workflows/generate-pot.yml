@@ -30,8 +30,8 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          if ! git diff --quiet languages/wp-barcode-api.pot; then
-            git add languages/wp-barcode-api.pot
+          git add languages/wp-barcode-api.pot
+          if ! git diff --staged --quiet; then
             git commit -m "i18n: Update POT file"
             git push
           else
