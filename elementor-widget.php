@@ -155,6 +155,30 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 		);
 
 		$this->add_control(
+			'text_size',
+			[
+				'label' => esc_html__( 'Text Size (pt)', 'wp-barcode-api' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 0,
+				'max' => 72,
+				'step' => 1,
+				'condition' => [ 'show_text' => 'true' ],
+			]
+		);
+
+		$this->add_control(
+			'text_margin',
+			[
+				'label' => esc_html__( 'Text Margin (px)', 'wp-barcode-api' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 0,
+				'max' => 100,
+				'step' => 1,
+				'condition' => [ 'show_text' => 'true' ],
+			]
+		);
+
+		$this->add_control(
 			'barcode_fg',
 			[
 				'label' => esc_html__( 'Foreground Color', 'wp-barcode-api' ),
@@ -315,6 +339,8 @@ class Elementor_Barcode_Widget extends \Elementor\Widget_Base {
 				'width'    => $settings['barcode_width'],
 				'height'   => $settings['barcode_height'],
 				'text'     => $settings['show_text'],
+				'textsize'   => $settings['text_size'],
+				'textmargin' => $settings['text_margin'],
 				'rotation' => $settings['rotation'],
 				'fg'       => $settings['barcode_fg'],
 				'bg'       => $settings['barcode_bg'],

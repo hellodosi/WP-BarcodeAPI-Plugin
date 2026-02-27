@@ -1,4 +1,4 @@
-name: Generate POT File
+name: Update PO & POT files
 
 on:
   push:
@@ -13,7 +13,7 @@ permissions:
   contents: write
 
 jobs:
-  generate-pot:
+  update-po-pot:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -26,14 +26,25 @@ jobs:
           sudo mv wp-cli.phar /usr/local/bin/wp
           wp i18n make-pot . languages/wp-barcode-api.pot --domain=wp-barcode-api --exclude="vendor,plugin-update-checker,.github,.vscode,node_modules"
 
-      - name: Commit and push POT file
+      - name: Update PO files from POT
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gettext
+          for po_file in languages/*.po; do
+            if [ -f "$po_file" ]; then
+              echo "Updating $po_file from POT file"
+              msgmerge --update "$po_file" languages/wp-barcode-api.pot
+            fi
+          done
+
+      - name: Commit and push translation template files
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add languages/wp-barcode-api.pot
+          git add languages/*.pot languages/*.po
           if ! git diff --staged --quiet; then
-            git commit -m "i18n: Update POT file"
+            git commit -m "i18n: Update POT and PO files"
             git push
           else
-            echo "No changes to POT file."
+            echo "No changes to translation template files."
           fi

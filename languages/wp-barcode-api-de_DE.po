@@ -1,0 +1,524 @@
+# German translation for WP Barcode API
+# Copyright (C) 2026 Dominik Scharrer
+# This file is distributed under the GPL v2 or later.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Barcode API 1.0.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/WP-BarcodeAPI-Plugin\n"
+"Last-Translator: Gemini Code Assist\n"
+"Language-Team: German <de_DE@li.org>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-02-27T20:59:55+00:00\n"
+"PO-Revision-Date: 2026-02-27 21:00+0000\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: wp-barcode-api\n"
+
+#. Plugin Name of the plugin
+#: wp-barcode-api.php
+msgid "WP Barcode API"
+msgstr "WP Barcode API"
+
+#. Plugin URI of the plugin
+#: wp-barcode-api.php
+msgid "https://github.com/hellodosi/WP-BarcodeAPI-Plugin"
+msgstr "https://github.com/hellodosi/WP-BarcodeAPI-Plugin"
+
+#. Description of the plugin
+#: wp-barcode-api.php
+msgid "A powerful plugin for generating barcodes and QR codes via shortcodes or Elementor using the BarcodeAPI.org interface."
+msgstr "Ein leistungsstarkes Plugin zur Generierung von Barcodes und QR-Codes über Shortcodes oder Elementor unter Verwendung der BarcodeAPI.org Schnittstelle."
+
+#. Author of the plugin
+#: wp-barcode-api.php
+msgid "Dominik Scharrer"
+msgstr "Dominik Scharrer"
+
+#. Author URI of the plugin
+#: wp-barcode-api.php
+msgid "https://github.com/hellodosi"
+msgstr "https://github.com/hellodosi"
+
+#: elementor-widget.php:13
+#: wp-barcode-api.php:114
+msgid "Barcode API"
+msgstr "Barcode API"
+
+#: elementor-widget.php:30
+#: wp-barcode-api.php:337
+msgid "Content"
+msgstr "Inhalt"
+
+#: elementor-widget.php:38
+msgid "Barcode Content"
+msgstr "Barcode-Inhalt"
+
+#: elementor-widget.php:44
+msgid "Enter text or URL"
+msgstr "Text oder URL eingeben"
+
+#: elementor-widget.php:53
+msgid "Barcode Type"
+msgstr "Barcode-Typ"
+
+#: elementor-widget.php:63
+msgid "Alignment"
+msgstr "Ausrichtung"
+
+#: elementor-widget.php:67
+msgid "Left"
+msgstr "Links"
+
+#: elementor-widget.php:71
+msgid "Center"
+msgstr "Zentriert"
+
+#: elementor-widget.php:75
+msgid "Right"
+msgstr "Rechts"
+
+#: elementor-widget.php:91
+msgid "API Settings"
+msgstr "API-Einstellungen"
+
+#: elementor-widget.php:102
+msgid "Note: Some settings (e.g., colors, size, text) are not supported by all barcode types."
+msgstr "Hinweis: Einige Einstellungen (z. B. Farben, Größe, Text) werden nicht von allen Barcode-Typen unterstützt."
+
+#: elementor-widget.php:111
+msgid "API Width (px)"
+msgstr "API-Breite (px)"
+
+#: elementor-widget.php:122
+msgid "API Height (px)"
+msgstr "API-Höhe (px)"
+
+#: elementor-widget.php:133
+msgid "Show Text"
+msgstr "Text anzeigen"
+
+#: elementor-widget.php:135
+msgid "Yes"
+msgstr "Ja"
+
+#: elementor-widget.php:136
+msgid "No"
+msgstr "Nein"
+
+#: elementor-widget.php:145
+msgid "Rotation"
+msgstr "Rotation"
+
+#: elementor-widget.php:149
+msgid "Normal"
+msgstr "Normal"
+
+#: elementor-widget.php:150
+msgid "90° Right"
+msgstr "90° Rechts"
+
+#: elementor-widget.php:151
+msgid "90° Left"
+msgstr "90° Links"
+
+#: elementor-widget.php:152
+msgid "180° Inverted"
+msgstr "180° Invertiert"
+
+#: elementor-widget.php:160
+msgid "Foreground Color"
+msgstr "Vordergrundfarbe"
+
+#: elementor-widget.php:169
+msgid "Background Color"
+msgstr "Hintergrundfarbe"
+
+#: elementor-widget.php:181
+msgid "Image"
+msgstr "Bild"
+
+#: elementor-widget.php:189
+msgid "Width"
+msgstr "Breite"
+
+#: elementor-widget.php:224
+msgid "Max Width"
+msgstr "Maximale Breite"
+
+#: elementor-widget.php:259
+msgid "Opacity"
+msgstr "Deckkraft"
+
+#: elementor-widget.php:285
+msgid "Border Radius"
+msgstr "Eckenradius"
+
+#: elementor-widget.php:325
+msgid "Barcode"
+msgstr "Barcode"
+
+#: wp-barcode-api.php:95
+msgid "Network response was not OK:"
+msgstr "Netzwerkantwort war nicht in Ordnung:"
+
+#: wp-barcode-api.php:96
+#: wp-barcode-api.php:287
+msgid "IP:"
+msgstr "IP:"
+
+#: wp-barcode-api.php:97
+#: wp-barcode-api.php:288
+msgid "Consumed:"
+msgstr "Verbraucht:"
+
+#: wp-barcode-api.php:98
+#: wp-barcode-api.php:289
+msgid "Status:"
+msgstr "Status:"
+
+#: wp-barcode-api.php:99
+#: wp-barcode-api.php:289
+msgid "Blocked"
+msgstr "Gesperrt"
+
+#: wp-barcode-api.php:100
+#: wp-barcode-api.php:289
+msgid "Active"
+msgstr "Aktiv"
+
+#: wp-barcode-api.php:101
+msgid "Unknown"
+msgstr "Unbekannt"
+
+#: wp-barcode-api.php:102
+msgid "Error loading data:"
+msgstr "Fehler beim Laden der Daten:"
+
+#: wp-barcode-api.php:103
+#: wp-barcode-api.php:300
+msgid "Loading data..."
+msgstr "Lade Daten..."
+
+#: wp-barcode-api.php:113
+msgid "Barcode API Settings"
+msgstr "Barcode API Einstellungen"
+
+#: wp-barcode-api.php:134
+msgid "Auto Detect"
+msgstr "Automatische Erkennung"
+
+#: wp-barcode-api.php:135
+msgid "QR Code"
+msgstr "QR Code"
+
+#: wp-barcode-api.php:136
+msgid "Code 128"
+msgstr "Code 128"
+
+#: wp-barcode-api.php:137
+msgid "Code 39"
+msgstr "Code 39"
+
+#: wp-barcode-api.php:138
+msgid "Code 93"
+msgstr "Code 93"
+
+#: wp-barcode-api.php:139
+msgid "Codabar"
+msgstr "Codabar"
+
+#: wp-barcode-api.php:140
+msgid "EAN-13"
+msgstr "EAN-13"
+
+#: wp-barcode-api.php:141
+msgid "EAN-8"
+msgstr "EAN-8"
+
+#: wp-barcode-api.php:142
+msgid "UPC-A"
+msgstr "UPC-A"
+
+#: wp-barcode-api.php:143
+msgid "UPC-E"
+msgstr "UPC-E"
+
+#: wp-barcode-api.php:144
+msgid "ITF (Interleaved 2 of 5)"
+msgstr "ITF (Interleaved 2 of 5)"
+
+#: wp-barcode-api.php:145
+msgid "ITF-14"
+msgstr "ITF-14"
+
+#: wp-barcode-api.php:146
+msgid "MSI"
+msgstr "MSI"
+
+#: wp-barcode-api.php:147
+msgid "MSI 10"
+msgstr "MSI 10"
+
+#: wp-barcode-api.php:148
+msgid "MSI 11"
+msgstr "MSI 11"
+
+#: wp-barcode-api.php:149
+msgid "MSI 1010"
+msgstr "MSI 1010"
+
+#: wp-barcode-api.php:150
+msgid "MSI 1110"
+msgstr "MSI 1110"
+
+#: wp-barcode-api.php:151
+msgid "Pharmacode"
+msgstr "Pharmacode"
+
+#: wp-barcode-api.php:152
+msgid "Data Matrix"
+msgstr "Data Matrix"
+
+#: wp-barcode-api.php:153
+msgid "PDF417"
+msgstr "PDF417"
+
+#: wp-barcode-api.php:154
+msgid "Aztec Code"
+msgstr "Aztec Code"
+
+#: wp-barcode-api.php:155
+msgid "Telepen"
+msgstr "Telepen"
+
+#: wp-barcode-api.php:156
+msgid "KIX (Klant index)"
+msgstr "KIX (Klant index)"
+
+#: wp-barcode-api.php:157
+msgid "RM4SCC (Royal Mail)"
+msgstr "RM4SCC (Royal Mail)"
+
+#: wp-barcode-api.php:158
+msgid "USPS Intelligent Mail"
+msgstr "USPS Intelligent Mail"
+
+#: wp-barcode-api.php:159
+msgid "GS1-128"
+msgstr "GS1-128"
+
+#: wp-barcode-api.php:160
+msgid "ISBN"
+msgstr "ISBN"
+
+#: wp-barcode-api.php:161
+msgid "ISMN"
+msgstr "ISMN"
+
+#: wp-barcode-api.php:162
+msgid "ISSN"
+msgstr "ISSN"
+
+#: wp-barcode-api.php:163
+msgid "Postnet"
+msgstr "Postnet"
+
+#: wp-barcode-api.php:164
+msgid "Planet"
+msgstr "Planet"
+
+#: wp-barcode-api.php:165
+msgid "Channel Code"
+msgstr "Channel Code"
+
+#: wp-barcode-api.php:166
+msgid "Code 11"
+msgstr "Code 11"
+
+#: wp-barcode-api.php:167
+msgid "Code 2 of 5"
+msgstr "Code 2 of 5"
+
+#: wp-barcode-api.php:168
+msgid "COOP 2 of 5"
+msgstr "COOP 2 of 5"
+
+#: wp-barcode-api.php:169
+msgid "Matrix 2 of 5"
+msgstr "Matrix 2 of 5"
+
+#: wp-barcode-api.php:170
+msgid "Industrial 2 of 5"
+msgstr "Industrial 2 of 5"
+
+#. translators: %s: The content of the barcode.
+#: wp-barcode-api.php:242
+#, php-format
+msgid "Barcode for %s"
+msgstr "Barcode für %s"
+
+#: wp-barcode-api.php:270
+msgid "WP Barcode API Settings"
+msgstr "WP Barcode API Einstellungen"
+
+#: wp-barcode-api.php:277
+msgid "API Usage & Rate Limits"
+msgstr "API-Nutzung & Rate-Limits"
+
+#: wp-barcode-api.php:278
+msgid "The API limits requests based on the IP address. Since this plugin uses both client-side (browser) and server-side (WordPress) requests, both limits are displayed separately here."
+msgstr "Die API limitiert Anfragen basierend auf der IP-Adresse. Da dieses Plugin sowohl client-seitige (Browser) als auch server-seitige (WordPress) Anfragen nutzt, werden hier beide Limits getrennt angezeigt."
+
+#: wp-barcode-api.php:283
+msgid "Server-side (WordPress)"
+msgstr "Server-seitig (WordPress)"
+
+#: wp-barcode-api.php:284
+msgid "Used for: Static generation, caching."
+msgstr "Genutzt für: Statische Generierung, Caching."
+
+#: wp-barcode-api.php:292
+msgid "Status could not be retrieved."
+msgstr "Status konnte nicht abgerufen werden."
+
+#: wp-barcode-api.php:298
+msgid "Client-side (Your Browser)"
+msgstr "Client-seitig (Ihr Browser)"
+
+#: wp-barcode-api.php:299
+msgid "Used for: Shortcodes, Elementor Widget."
+msgstr "Genutzt für: Shortcodes, Elementor Widget."
+
+#: wp-barcode-api.php:305
+msgid "View details on barcodeapi.org"
+msgstr "Details auf barcodeapi.org ansehen"
+
+#: wp-barcode-api.php:306
+msgid "Buy API Key"
+msgstr "API-Key kaufen"
+
+#: wp-barcode-api.php:318
+msgid "API Key (Optional)"
+msgstr "API-Key (Optional)"
+
+#: wp-barcode-api.php:321
+msgid "Enter your key here to use higher limits."
+msgstr "Geben Sie hier Ihren Key ein, um höhere Limits zu nutzen."
+
+#: wp-barcode-api.php:330
+msgid "Generate Static Barcode"
+msgstr "Statischen Barcode generieren"
+
+#: wp-barcode-api.php:331
+msgid "Use this form to generate a barcode once and save it permanently in your media library."
+msgstr "Nutzen Sie dieses Formular, um einen Barcode einmalig zu generieren und dauerhaft in Ihrer Mediathek zu speichern."
+
+#: wp-barcode-api.php:338
+msgid "e.g. 12345678 or https://..."
+msgstr "z.B. 12345678 oder https://..."
+
+#: wp-barcode-api.php:341
+msgid "Type"
+msgstr "Typ"
+
+#: wp-barcode-api.php:351
+msgid "Options"
+msgstr "Optionen"
+
+#: wp-barcode-api.php:353
+msgid "Width:"
+msgstr "Breite:"
+
+#: wp-barcode-api.php:353
+msgid "e.g. 200"
+msgstr "z.B. 200"
+
+#: wp-barcode-api.php:354
+msgid "Height:"
+msgstr "Höhe:"
+
+#: wp-barcode-api.php:354
+msgid "e.g. 80"
+msgstr "z.B. 80"
+
+#: wp-barcode-api.php:358
+msgid "Colors (Hex)"
+msgstr "Farben (Hex)"
+
+#: wp-barcode-api.php:360
+msgid "Foreground:"
+msgstr "Vordergrund:"
+
+#: wp-barcode-api.php:360
+msgid "000000"
+msgstr "000000"
+
+#: wp-barcode-api.php:361
+msgid "Background:"
+msgstr "Hintergrund:"
+
+#: wp-barcode-api.php:361
+msgid "ffffff"
+msgstr "ffffff"
+
+#: wp-barcode-api.php:366
+msgid "Note:"
+msgstr "Hinweis:"
+
+#: wp-barcode-api.php:366
+msgid "Not all settings (e.g., colors, text display, dimensions) are supported by every barcode type. For example, QR codes often ignore specific dimension settings in favor of readability."
+msgstr "Nicht alle Einstellungen (z.B. Farben, Textanzeige, Dimensionen) werden von jedem Barcode-Typ unterstützt. QR-Codes ignorieren beispielsweise oft spezifische Dimensionsvorgaben zugunsten der Lesbarkeit."
+
+#: wp-barcode-api.php:371
+msgid "Save to Media Library"
+msgstr "In Mediathek speichern"
+
+#: wp-barcode-api.php:377
+msgid "Shortcode Guide"
+msgstr "Shortcode-Anleitung"
+
+#: wp-barcode-api.php:378
+msgid "Use the shortcode anywhere in your content:"
+msgstr "Verwenden Sie den Shortcode an beliebiger Stelle in Ihren Inhalten:"
+
+#: wp-barcode-api.php:380
+msgid "Available attributes:"
+msgstr "Verfügbare Attribute:"
+
+#: wp-barcode-api.php:380
+msgid "Note: Not all attributes work with every barcode type."
+msgstr "Hinweis: Nicht alle Attribute funktionieren mit jedem Barcode-Typ."
+
+#: wp-barcode-api.php:390
+msgid "You do not have permission to upload files."
+msgstr "Sie haben keine Berechtigung, Dateien hochzuladen."
+
+#: wp-barcode-api.php:412
+msgid "Error retrieving the barcode from the API."
+msgstr "Fehler beim Abrufen des Barcodes von der API."
+
+#. translators: %s: The error message from the upload process.
+#: wp-barcode-api.php:422
+#, php-format
+msgid "Error saving file: %s"
+msgstr "Fehler beim Speichern der Datei: %s"
+
+#. translators: %s: The content of the barcode.
+#: wp-barcode-api.php:434
+#, php-format
+msgid "Barcode: %s"
+msgstr "Barcode: %s"
+
+#. translators: %s is a link to view the image.
+#: wp-barcode-api.php:446
+#, php-format
+msgid "Barcode saved successfully! %s"
+msgstr "Barcode erfolgreich gespeichert! %s"
+
+#: wp-barcode-api.php:447
+msgid "View image"
+msgstr "Bild ansehen"
+

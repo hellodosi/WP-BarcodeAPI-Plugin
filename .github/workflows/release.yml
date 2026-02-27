@@ -55,6 +55,19 @@ jobs:
             git push
           fi
 
+      - name: Compile MO files for release
+        if: steps.check_tag.outputs.exists == 'false'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gettext
+          for po_file in languages/*.po; do
+            if [ -f "$po_file" ]; then
+              mo_file="${po_file%.po}.mo"
+              echo "Compiling $po_file to $mo_file for release package"
+              msgfmt -o "$mo_file" "$po_file"
+            fi
+          done
+
       - name: Prepare Release Package
         if: steps.check_tag.outputs.exists == 'false'
         run: |
