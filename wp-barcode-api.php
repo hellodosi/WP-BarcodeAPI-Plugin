@@ -3,7 +3,7 @@
  * Plugin Name:       WP Barcode API
  * Plugin URI:        https://github.com/hellodosi/WP-BarcodeAPI-Plugin
  * Description:       Ein WordPress Plugin zur Bereitstellung einer Barcode API.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Dominik Scharrer
@@ -343,6 +343,11 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 								<label>Hintergrund: <input type="text" name="bc_bg" placeholder="ffffff" class="small-text"></label>
 							</td>
 						</tr>
+						<tr>
+							<td colspan="2">
+								<p class="description"><strong>Hinweis:</strong> Nicht alle Einstellungen (z.B. Farben, Textanzeige, Dimensionen) werden von jedem Barcode-Typ unterstützt. QR-Codes ignorieren beispielsweise oft spezifische Dimensionsvorgaben zugunsten der Lesbarkeit.</p>
+							</td>
+						</tr>
 					</table>
 					<p class="submit">
 						<input type="submit" name="generate_static_barcode" id="submit-gen" class="button button-secondary" value="In Mediathek speichern">
@@ -354,7 +359,7 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 				<h2>Shortcode Anleitung</h2>
 				<p>Verwenden Sie den Shortcode an beliebiger Stelle:</p>
 				<code>[barcode content="IhrText" type="qrcode" width="150"]</code>
-				<p>Verfügbare Attribute: <code>content</code>, <code>type</code>, <code>width</code>, <code>height</code>, <code>fg</code> (Farbe), <code>bg</code> (Hintergrund), <code>show_text</code>.</p>
+				<p>Verfügbare Attribute: <code>content</code>, <code>type</code>, <code>width</code>, <code>height</code>, <code>fg</code> (Farbe), <code>bg</code> (Hintergrund), <code>show_text</code>.<br><em>Hinweis: Nicht alle Attribute funktionieren mit jedem Barcode-Typ.</em></p>
 			</div>
 			<?php
 		}
