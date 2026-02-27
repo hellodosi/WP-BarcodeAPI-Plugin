@@ -137,11 +137,11 @@ msgstr "180° Invertiert"
 
 #: elementor-widget.php:160
 msgid "Text Size (pt)"
-msgstr ""
+msgstr "Textgröße (pt)"
 
 #: elementor-widget.php:172
 msgid "Text Margin (px)"
-msgstr ""
+msgstr "Text Abstand (px)"
 
 #: elementor-widget.php:184
 msgid "Foreground Color"
@@ -523,7 +523,7 @@ msgstr "Sie haben keine Berechtigung, Dateien hochzuladen."
 
 #: wp-barcode-api.php:402
 msgid "Error: The content field is required."
-msgstr ""
+msgstr "Fehler: Das Feld „Inhalt“ ist ein Pflichtfeld."
 
 #: wp-barcode-api.php:417
 msgid "Error retrieving the barcode from the API."
