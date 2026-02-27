@@ -432,9 +432,6 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 					__FILE__,
 					'wp-barcode-api'
 				);
-				
-				// Authentifizierung für privates Repo
-				$myUpdateChecker->setAuthentication('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');
 			}
 		}
 	}
