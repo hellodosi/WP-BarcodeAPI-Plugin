@@ -1,8 +1,0 @@
-{
-    "intelephense.stubs": [
-        "Core",
-        "standard",
-        "vendor/php-stubs/wordpress-stubs/wordpress-stubs.php",
-        "vendor/arifpavel/elementor-stubs/elementor-stubs.php"
-    ]
-}

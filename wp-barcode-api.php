@@ -390,13 +390,18 @@ if ( ! class_exists( 'WP_Barcode_API' ) ) {
 				return __( 'You do not have permission to upload files.', 'wp-barcode-api' );
 			}
 
-			$content = sanitize_text_field( $_POST['bc_content'] );
-			$type    = sanitize_text_field( $_POST['bc_type'] );
-			$width   = sanitize_text_field( $_POST['bc_width'] );
-			$height  = sanitize_text_field( $_POST['bc_height'] );
-			$fg      = sanitize_text_field( $_POST['bc_fg'] );
-			$bg      = sanitize_text_field( $_POST['bc_bg'] );
+			// Sanitize and validate POST data to prevent undefined index notices.
+			$content = sanitize_text_field( $_POST['bc_content'] ?? '' );
+			$type    = sanitize_text_field( $_POST['bc_type'] ?? 'auto' );
+			$width   = sanitize_text_field( $_POST['bc_width'] ?? '' );
+			$height  = sanitize_text_field( $_POST['bc_height'] ?? '' );
+			$fg      = sanitize_text_field( $_POST['bc_fg'] ?? '' );
+			$bg      = sanitize_text_field( $_POST['bc_bg'] ?? '' );
 
+			if ( empty( $content ) ) {
+				return __( 'Error: The content field is required.', 'wp-barcode-api' );
+			}
+			
 			$args = array(
 				'width'  => $width,
 				'height' => $height,
