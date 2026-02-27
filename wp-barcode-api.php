@@ -3,7 +3,7 @@
  * Plugin Name:       WP Barcode API
  * Plugin URI:        https://github.com/hellodosi/WP-BarcodeAPI-Plugin
  * Description:       Ein WordPress Plugin zur Bereitstellung einer Barcode API.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Dominik Scharrer
