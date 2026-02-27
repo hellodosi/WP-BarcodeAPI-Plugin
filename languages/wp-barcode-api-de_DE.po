@@ -5,15 +5,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Barcode API 1.0.4\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/WP-BarcodeAPI-Plugin\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/WP-BarcodeAPI-"
+"Plugin\n"
+"POT-Creation-Date: 2026-02-27T22:11:28+00:00\n"
+"PO-Revision-Date: 2026-02-27 21:00+0000\n"
 "Last-Translator: Gemini Code Assist\n"
 "Language-Team: German <de_DE@li.org>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-27T20:59:55+00:00\n"
-"PO-Revision-Date: 2026-02-27 21:00+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: wp-barcode-api\n"
 
@@ -29,8 +30,12 @@ msgstr "https://github.com/hellodosi/WP-BarcodeAPI-Plugin"
 
 #. Description of the plugin
 #: wp-barcode-api.php
-msgid "A powerful plugin for generating barcodes and QR codes via shortcodes or Elementor using the BarcodeAPI.org interface."
-msgstr "Ein leistungsstarkes Plugin zur Generierung von Barcodes und QR-Codes über Shortcodes oder Elementor unter Verwendung der BarcodeAPI.org Schnittstelle."
+msgid ""
+"A powerful plugin for generating barcodes and QR codes via shortcodes or "
+"Elementor using the BarcodeAPI.org interface."
+msgstr ""
+"Ein leistungsstarkes Plugin zur Generierung von Barcodes und QR-Codes über "
+"Shortcodes oder Elementor unter Verwendung der BarcodeAPI.org Schnittstelle."
 
 #. Author of the plugin
 #: wp-barcode-api.php
@@ -42,13 +47,11 @@ msgstr "Dominik Scharrer"
 msgid "https://github.com/hellodosi"
 msgstr "https://github.com/hellodosi"
 
-#: elementor-widget.php:13
-#: wp-barcode-api.php:114
+#: elementor-widget.php:13 wp-barcode-api.php:114
 msgid "Barcode API"
 msgstr "Barcode API"
 
-#: elementor-widget.php:30
-#: wp-barcode-api.php:337
+#: elementor-widget.php:30 wp-barcode-api.php:337
 msgid "Content"
 msgstr "Inhalt"
 
@@ -85,8 +88,12 @@ msgid "API Settings"
 msgstr "API-Einstellungen"
 
 #: elementor-widget.php:102
-msgid "Note: Some settings (e.g., colors, size, text) are not supported by all barcode types."
-msgstr "Hinweis: Einige Einstellungen (z. B. Farben, Größe, Text) werden nicht von allen Barcode-Typen unterstützt."
+msgid ""
+"Note: Some settings (e.g., colors, size, text) are not supported by all "
+"barcode types."
+msgstr ""
+"Hinweis: Einige Einstellungen (z. B. Farben, Größe, Text) werden nicht von "
+"allen Barcode-Typen unterstützt."
 
 #: elementor-widget.php:111
 msgid "API Width (px)"
@@ -129,34 +136,42 @@ msgid "180° Inverted"
 msgstr "180° Invertiert"
 
 #: elementor-widget.php:160
+msgid "Text Size (pt)"
+msgstr ""
+
+#: elementor-widget.php:172
+msgid "Text Margin (px)"
+msgstr ""
+
+#: elementor-widget.php:184
 msgid "Foreground Color"
 msgstr "Vordergrundfarbe"
 
-#: elementor-widget.php:169
+#: elementor-widget.php:193
 msgid "Background Color"
 msgstr "Hintergrundfarbe"
 
-#: elementor-widget.php:181
+#: elementor-widget.php:205
 msgid "Image"
 msgstr "Bild"
 
-#: elementor-widget.php:189
+#: elementor-widget.php:213
 msgid "Width"
 msgstr "Breite"
 
-#: elementor-widget.php:224
+#: elementor-widget.php:248
 msgid "Max Width"
 msgstr "Maximale Breite"
 
-#: elementor-widget.php:259
+#: elementor-widget.php:283
 msgid "Opacity"
 msgstr "Deckkraft"
 
-#: elementor-widget.php:285
+#: elementor-widget.php:309
 msgid "Border Radius"
 msgstr "Eckenradius"
 
-#: elementor-widget.php:325
+#: elementor-widget.php:351
 msgid "Barcode"
 msgstr "Barcode"
 
@@ -164,28 +179,23 @@ msgstr "Barcode"
 msgid "Network response was not OK:"
 msgstr "Netzwerkantwort war nicht in Ordnung:"
 
-#: wp-barcode-api.php:96
-#: wp-barcode-api.php:287
+#: wp-barcode-api.php:96 wp-barcode-api.php:287
 msgid "IP:"
 msgstr "IP:"
 
-#: wp-barcode-api.php:97
-#: wp-barcode-api.php:288
+#: wp-barcode-api.php:97 wp-barcode-api.php:288
 msgid "Consumed:"
 msgstr "Verbraucht:"
 
-#: wp-barcode-api.php:98
-#: wp-barcode-api.php:289
+#: wp-barcode-api.php:98 wp-barcode-api.php:289
 msgid "Status:"
 msgstr "Status:"
 
-#: wp-barcode-api.php:99
-#: wp-barcode-api.php:289
+#: wp-barcode-api.php:99 wp-barcode-api.php:289
 msgid "Blocked"
 msgstr "Gesperrt"
 
-#: wp-barcode-api.php:100
-#: wp-barcode-api.php:289
+#: wp-barcode-api.php:100 wp-barcode-api.php:289
 msgid "Active"
 msgstr "Aktiv"
 
@@ -197,8 +207,7 @@ msgstr "Unbekannt"
 msgid "Error loading data:"
 msgstr "Fehler beim Laden der Daten:"
 
-#: wp-barcode-api.php:103
-#: wp-barcode-api.php:300
+#: wp-barcode-api.php:103 wp-barcode-api.php:300
 msgid "Loading data..."
 msgstr "Lade Daten..."
 
@@ -369,8 +378,14 @@ msgid "API Usage & Rate Limits"
 msgstr "API-Nutzung & Rate-Limits"
 
 #: wp-barcode-api.php:278
-msgid "The API limits requests based on the IP address. Since this plugin uses both client-side (browser) and server-side (WordPress) requests, both limits are displayed separately here."
-msgstr "Die API limitiert Anfragen basierend auf der IP-Adresse. Da dieses Plugin sowohl client-seitige (Browser) als auch server-seitige (WordPress) Anfragen nutzt, werden hier beide Limits getrennt angezeigt."
+msgid ""
+"The API limits requests based on the IP address. Since this plugin uses both "
+"client-side (browser) and server-side (WordPress) requests, both limits are "
+"displayed separately here."
+msgstr ""
+"Die API limitiert Anfragen basierend auf der IP-Adresse. Da dieses Plugin "
+"sowohl client-seitige (Browser) als auch server-seitige (WordPress) Anfragen "
+"nutzt, werden hier beide Limits getrennt angezeigt."
 
 #: wp-barcode-api.php:283
 msgid "Server-side (WordPress)"
@@ -413,8 +428,12 @@ msgid "Generate Static Barcode"
 msgstr "Statischen Barcode generieren"
 
 #: wp-barcode-api.php:331
-msgid "Use this form to generate a barcode once and save it permanently in your media library."
-msgstr "Nutzen Sie dieses Formular, um einen Barcode einmalig zu generieren und dauerhaft in Ihrer Mediathek zu speichern."
+msgid ""
+"Use this form to generate a barcode once and save it permanently in your "
+"media library."
+msgstr ""
+"Nutzen Sie dieses Formular, um einen Barcode einmalig zu generieren und "
+"dauerhaft in Ihrer Mediathek zu speichern."
 
 #: wp-barcode-api.php:338
 msgid "e.g. 12345678 or https://..."
@@ -469,8 +488,14 @@ msgid "Note:"
 msgstr "Hinweis:"
 
 #: wp-barcode-api.php:366
-msgid "Not all settings (e.g., colors, text display, dimensions) are supported by every barcode type. For example, QR codes often ignore specific dimension settings in favor of readability."
-msgstr "Nicht alle Einstellungen (z.B. Farben, Textanzeige, Dimensionen) werden von jedem Barcode-Typ unterstützt. QR-Codes ignorieren beispielsweise oft spezifische Dimensionsvorgaben zugunsten der Lesbarkeit."
+msgid ""
+"Not all settings (e.g., colors, text display, dimensions) are supported by "
+"every barcode type. For example, QR codes often ignore specific dimension "
+"settings in favor of readability."
+msgstr ""
+"Nicht alle Einstellungen (z.B. Farben, Textanzeige, Dimensionen) werden von "
+"jedem Barcode-Typ unterstützt. QR-Codes ignorieren beispielsweise oft "
+"spezifische Dimensionsvorgaben zugunsten der Lesbarkeit."
 
 #: wp-barcode-api.php:371
 msgid "Save to Media Library"
@@ -521,4 +546,3 @@ msgstr "Barcode erfolgreich gespeichert! %s"
 #: wp-barcode-api.php:447
 msgid "View image"
 msgstr "Bild ansehen"
-
